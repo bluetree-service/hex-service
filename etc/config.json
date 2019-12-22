@@ -1,3 +1,6 @@
 {
-  "host": "git-example"
+  "host": "git-example",
+  "hostParent": "",
+  "collector": "collector-mock-host",
+  "workerTime": 30000
 }

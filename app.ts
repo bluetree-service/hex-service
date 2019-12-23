@@ -1,8 +1,8 @@
 import * as fs from "fs";
 import {SymfonyStyle} from "symfony-style-console";
-import "./src/Process.ts"
-import "./src/Collector.ts"
-  
+import Process = require("./src/Process");
+import "./src/Collector.ts";
+
 const style = new SymfonyStyle();
 const mainConfig = "/etc/hex-service/config.json";
 const defaultConfig = "./etc/config.json";
@@ -17,7 +17,7 @@ try {
 }
 
 try {
-
+  let process = new Process(config, style);
 } catch (Exception) {
   style.error(Exception.message);
   process.exit(1);

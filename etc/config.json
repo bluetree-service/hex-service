@@ -2,5 +2,5 @@
   "host": "git-example",
   "hostParent": "",
   "collector": "collector-mock-host",
-  "workerTime": 30000
+  "workerTime": 300000
 }

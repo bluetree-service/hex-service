@@ -13,7 +13,7 @@ class Collector
     this.style = style;
   }
 
-  public execute()
+  public execute(): void
   {
     let ls;
     let output;
@@ -24,7 +24,7 @@ class Collector
       ls = exception.stderr
     } finally {
       const out = Buffer.from(ls);
-      output = out.toString().replace("\n", '');
+      output = out.toString().replace("\n", "");
     }
 
     console.log(output);

@@ -1,4 +1,5 @@
 import {SymfonyStyle} from "symfony-style-console";
+import {execSync} from "child_process";
 
 class Collector
 {
@@ -14,7 +15,19 @@ class Collector
 
   public execute()
   {
-    console.log("exec\n");
+    let ls;
+    let output;
+
+    try {
+      ls = execSync("pwd");
+    } catch (exception) {
+      ls = exception.stderr
+    } finally {
+      const out = Buffer.from(ls);
+      output = out.toString().replace("\n", '');
+    }
+
+    console.log(output);
   }
 }
 

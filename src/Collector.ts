@@ -1,17 +1,11 @@
 import {SymfonyStyle} from "symfony-style-console";
 import {execSync} from "child_process";
-
-const commands: Array<string> = [
-  "uptime -p",
-  "uptime -s",
-  "cat /proc/loadavg | awk '{print $1,$2,$3}'",
-  "free | grep \"Mem\\|Pamięć\" | awk '{print ($2-$3) / $2 * 100.0}'",
-  "grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage \"%\"}'",
-];
+import Cpu = require("./SystemInfoCollections/Cpu.js");
 
 class Collector
 {
   protected style: SymfonyStyle;
+  protected collection: [];
 
   /**
    * @param {SymfonyStyle} style
@@ -27,6 +21,8 @@ class Collector
     let output: string;
 
     try {
+      let cpu = new Cpu();
+      console.log(cpu.getData())
       ls = execSync("pwd");
     } catch (exception) {
       ls = exception.stderr

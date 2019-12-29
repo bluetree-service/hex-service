@@ -10,21 +10,25 @@ class Cpu implements SystemInfoCollections
 
   public getData(): []
   {
-    return [];
+    return this.cpuLoad();
   }
 
-  public cpuLoad(): void
+  public cpuLoad(): []
   {
+    let cpuData = [];
+
     SysInfo.currentLoad()
       .then(data => {
-        console.log(data.avgload);
-        console.log(data.currentload);
-        console.log(data.cpus);
-        console.log(data.currentload_user);
+        cpuData["average"] = data.avgload;
+        cpuData["current"] = data.currentload;
+        cpuData["cpus"] = data.cpus;
+        cpuData["user_load"] = data.currentload_user;
       })
       .catch(error => {
         console.log(error)
       });
+
+    return cpuData;
   }
 }
 

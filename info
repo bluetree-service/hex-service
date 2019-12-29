@@ -1,0 +1,28 @@
+const commands: Array<string> = [
+  "uptime -p",
+  "uptime -s",
+  "cat /proc/loadavg | awk '{print $1,$2,$3}'",
+  "free | grep \"Mem\\|Pamięć\" | awk '{print ($2-$3) / $2 * 100.0}'",
+  "grep 'cpu ' /proc/stat | awk '{usage=($2+$4)*100/($2+$4+$5)} END {print usage \"%\"}'",
+  //select * from memory_info;
+  //SELECT * FROM uptime;
+  //select path, type, round((blocks_available * blocks_size *10e-10),2) as gigs_free from mounts where path='/';
+  /*
+  SELECT pid, uid, name, ROUND((
+  (user_time + system_time) / (cpu_time.tsb - cpu_time.itsb)
+) * 100, 2) AS percentage
+FROM processes, (
+SELECT (
+  SUM(user) + SUM(nice) + SUM(system) + SUM(idle) * 1.0) AS tsb,
+  SUM(COALESCE(idle, 0)) + SUM(COALESCE(iowait, 0)) AS itsb
+  FROM cpu_time
+) AS cpu_time
+ORDER BY user_time+system_time DESC
+LIMIT 5;
+   */
+  //SELECT pid, name, ROUND((total_size * '10e-7'), 2) AS used FROM processes ORDER BY total_size DESC LIMIT 5;
+  //cat /proc/stat
+];
+
+
+https://www.tecmint.com/enable-monitor-php-fpm-status-in-nginx/

@@ -15,10 +15,11 @@ class Cpu implements SystemInfoCollections
 
   public cpuLoad(): []
   {
-    let cpuData = [];
+    let cpuData;
 
     SysInfo.currentLoad()
       .then(data => {
+        cpuData = [];
         cpuData["average"] = data.avgload;
         cpuData["current"] = data.currentload;
         cpuData["cpus"] = data.cpus;
@@ -26,8 +27,13 @@ class Cpu implements SystemInfoCollections
       })
       .catch(error => {
         console.log(error)
+      })
+      .finally(() => {
+        return cpuData
       });
 
+
+    setTimeout(() => console.log(cpuData), 1000);
     return cpuData;
   }
 }

@@ -22,7 +22,7 @@
     "console.table": "^0.10.0",
     "forever": "^1.0.0",
     "symfony-style-console": "^0.4.2",
-    "systeminformation": "^4.16.0",
+    "systeminformation": "^5.6.4",
     "ts-node": "^8.5.4",
     "typescript": "^3.7.4"
   },
